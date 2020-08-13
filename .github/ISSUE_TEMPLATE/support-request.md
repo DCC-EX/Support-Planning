@@ -6,9 +6,18 @@ labels: ''
 assignees: ''
 
 ---
+**Requester Name**
+
+**Requestor Email**
+
+**Issue Title**
 
 **Describe Issue:**
 
 **Enter Product Name**
 
 **Enter Release**
+
+**Enter Microcontroller Name**
+
+**Enter Motor Shield Name**
