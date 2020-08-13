@@ -9,4 +9,4 @@ assignees: ''
 
 **Enter Work Task Description**
 
-**Enter what is needed to determine if Work Task has been completed**
+**Enter Done Criteria**
