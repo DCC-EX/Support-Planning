@@ -18,6 +18,10 @@ assignees: ''
 
 **Enter Release:**
 
+**Enter Minicompute: PC, Mac, or Linux:**  
+
+**Enter Minicompute OS: Windows, MacOS, or Linux:**  **Enter OS Version**
+
 **Enter Microcontroller Name: (Optional)**
 
 **Enter Motor Shield Name: (Optional)**
