@@ -1,4 +1,6 @@
 ---
+**THIS FILE IS BEING USED AS AN EXAMPLE, IT IS NOT CURRENTLY BEING USED BY DCC++EX**
+
 name: Bug report
 about: Create a report to help us improve
 title: ''
