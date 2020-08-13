@@ -1,4 +1,6 @@
 ---
+**THIS FILE IS BEING USED AS AN EXAMPLE, IT IS NOT CURRENTLY BEING USED BY DCC++EX**
+
 name: Feature request
 about: Suggest an idea for this project
 title: ''
