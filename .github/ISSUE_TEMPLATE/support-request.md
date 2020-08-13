@@ -20,7 +20,7 @@ assignees: ''
 
 **Enter Minicompute: PC, Mac, or Linux:**  
 
-**Enter Minicompute OS: Windows, MacOS, or Linux:**  **Enter OS Version**
+**Enter Minicompute OS: Windows, MacOS, or Linux:**         **Enter OS Version**
 
 **Enter Microcontroller Name: (Optional)**
 
