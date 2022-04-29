@@ -1,2 +1,10 @@
 # Support-Planning
-Is a DCC++EX Repo that will be used to hold any Issues or Pull Request info related to Support Request and Development Project Portfolio Planning.  
+
+This repository is to capture all relevant documentation, processes, and workflows related to the DCC++ EX project.
+
+This includes:
+- Support processes
+- GitHub Project configuration
+- GitHub Workflows required for each repository
+- Integrations
+- Required labels/metadata for issues and pull requests
