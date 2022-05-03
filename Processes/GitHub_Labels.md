@@ -9,6 +9,7 @@ Beta Testing | Lt Orange | Task relates to a feature in Beta testing
 Breaking Change | Red | Indicates that the bug fix or new feature introduces a breaking change
 Bug | Red | Something isn't working as designed
 Documentation | Yellow | Task relates to documentation
+Documented | Green | Task that was previously labelled "Needs Documentation" has had this completed
 Enhancement | Lt Blue | New feature or request
 Hardware | Bluish | Task relates to hardware
 Needs Clarification | Orange Red | Need more information from the requestor

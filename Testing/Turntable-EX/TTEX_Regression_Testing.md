@@ -22,7 +22,30 @@ Outputs of each step are to be recorded... somewhere?
 
 ## Testing Process
 
-Ensure Turntable-EX is correctly connected via the I2C bus to the CommandStation, then power on Turntable-EX first, followed by the CommandStation.
+Ensure Turntable-EX is correctly connected via the I2C bus to the CommandStation, then power on Turntable-EX first, followed by the CommandStation, ensuring both are connected via serial, with serial console opened to both.
+
+### Startup, Homing, and Calibration Tests
+
+On startup, use the serial console of Turntable-EX to validate the version, and note if steps have been stored previously in EEPROM or not:
+
+```
+License GPLv3 fsf.org (c) dcc-ex.com
+Turntable-EX version X.X.X
+```
+
+If calibration has been completed previously, you should see:
+
+```
+Turntable-EX has been calibrated for XXXX steps per revolution
+```
+
+Otherwise:
+
+```
+Turntable-EX has not been calibrated yet
+```
+
+
 
 ### Validate Turntable-EX is Online
 
@@ -37,6 +60,3 @@ In the serial console of the CommandStation, execute `<D HAL SHOW>` and ensure t
 <* TurntableEX I2C:x60 Configured on Vpins:600-600  *>
 <* LCD3:Free RAM= 2412b *>
 ```
-
-### Startup, Homing, and Calibration Tests
-
