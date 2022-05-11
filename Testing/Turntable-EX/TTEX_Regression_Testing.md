@@ -2,18 +2,20 @@
 
 The regression testing process is to be completed prior to any new release of Turntable-EX.
 
+Note that the focus of the regression testing is the reliability and functionality of the Turntable-EX code, not the accuracy or performance of the stepper motors. There are variances to take into account with different manufacturers of stepper motors, particular when it comes to generic clones that have questionable quality control. The automatic calibration sequence has been written specifically to cater for this.
+
 ## Preparation
 
 The CommandStation used to for this testing must be running the [add-turntable-controller](https://github.com/DCC-EX/CommandStation-EX/tree/add-turntable-controller) branch of release version 4.1.0.
 
-In addition, the included myAutomation.h and myHal.cpp files must be included with the software uploaded to the CommandStation.
+In addition, the myAutomation.h and myHal.cpp files included in the folder with this file must be included with the software uploaded to the CommandStation.
 
-**NOTE on myAutomation.h:** If you are not using the default ULN2003/28BYJ-48 stepper driver/motor combination, you will likely need to update the step positions in myAutomation.h for these to be valid and relevant for your testing setup.
+**NOTE on myAutomation.h:** If you are not using the default ULN2003/28BYJ-48 stepper driver/motor combination, you will likely need to update config.h to be relevant for your testing setup. If this is the case, you will likely also need to ensure that the step positions used during the Basic Movement tests are updated to suit.
 
 ### Hardware Requirements
 
-- CommandStation-EX with wireless and EX-RAIL support.
-- An Arduino Nano/Uno configured as per the Turntable-EX documentation with a supported stepper driver, motor, and homing sensor.
+- CommandStation-EX with EX-RAIL support (Wireless optional but required if testing with Engine Driver/WiThrottle).
+- An Arduino Nano/Uno configured as per the Turntable-EX documentation with a supported stepper driver, motor, and homing sensor. A dual relay board is optional but recommended for validation of phase switching.
 - A suitable config.h file configured as per the Turntable-EX documentation, with the only configuration change being the appropriate stepper driver to suit the supported hardware in use.
 - LEDs for validating the LED and accessory outputs.
 - A phone or tablet running Engine Driver (A full WiThrottle app supporting ROUTEs will also work).
@@ -35,7 +37,7 @@ On startup, use the serial console of Turntable-EX to validate the version, and 
 ```
 License GPLv3 fsf.org (c) dcc-ex.com
 Turntable-EX version X.X.X
-Turntable-EX has been calibrated for XXXX steps per revolution    <<== Previous calibration complete
+Turntable-EX has been calibrated for XXXX steps per revolution    <<== Previous calibration complete *OR*
 Turntable-EX has not been calibrated yet                          <<== Has not been calibrated
 ```
 
@@ -83,5 +85,46 @@ In the serial console of the CommandStation, execute `<D HAL SHOW>` and ensure t
 
 *Note that the I2C connection to the CommandStation must be reliable, and Turntable-EX powered on prior to the CommandStation for this test to succeed.*
 
-### Basic Movement
+### Basic Movement and Phase Inversion
 
+#### Part 1 - Clockwise
+
+Testing basic movement requires use of the serial console of the CommandStation and/or Engine Driver or a WiThrottle application in order to issue the required commands.
+
+When using the serial console, executing the below commands in this order should have the turntable rotate in a clockwise direction only, with the last three positions activating the dual relay board for DCC phase inversion.
+
+```
+<D TT 600 114 0>
+<D TT 600 227 0>
+<D TT 600 341 0>
+<D TT 600 2159 1>
+<D TT 600 2273 1>
+<D TT 600 2386 1>
+```
+
+If using Engine Driver or a WiThrottle for these tests, select these ROUTEs in this order which should have the same output as the serial commands above:
+
+1. TTEX-RT1 - Position 1
+2. TTEX-RT2 - Position 2
+3. TTEX-RT3 - Position 3
+4. TTEX-RT4 - Position 4
+5. TTEX-RT5 - Position 5
+6. TTEX-RT6 - Position 6
+
+`Success Criteria:` The turntable should rotate to ~10 degrees from home, then ~20 degrees, then ~30 degrees, then ~190 degrees with relay activation, ~200 degrees maintaining relay activation, and finally ~210 degrees maintaining relay activation, all in a clockwise direction.
+
+#### Part 2 - Counter Clockwise
+
+Executing the below commands in this order should have the turntable rotate in a counter clockwise direction, with the second command deactivating the dual relay board:
+
+```
+<D TT 600 2159 1>
+<D TT 600 227 0>
+```
+
+If using Engine Driver or a WiThrottle for these tests, select these ROUTEs in this order which should have the same output as the serial commands above:
+
+1. TTEX-RT7 - Position 4
+2. TTEX-RT8 - Position 2
+
+`Success Criteria:` The turntable should rotate to ~190 degrees from home maintaining relay activation, then ~20 degrees and deactiving the relays.

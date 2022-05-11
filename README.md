@@ -6,5 +6,6 @@ This includes:
 - Support processes
 - GitHub Project configuration
 - GitHub Workflows required for each repository
+- Standard GitHub labels
 - Integrations
 - Required labels/metadata for issues and pull requests
