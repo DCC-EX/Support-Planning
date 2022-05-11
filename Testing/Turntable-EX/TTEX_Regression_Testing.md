@@ -34,7 +34,7 @@ A template has been provided which is currently labelled "Beta Testing Results" 
 
 Ensure Turntable-EX is correctly connected via the I2C bus to the CommandStation, then power on Turntable-EX first, followed by the CommandStation, ensuring both are connected via serial, with serial console opened to both.
 
-### Startup Sequence
+### Test 1 - Startup Sequence
 
 On startup, use the serial console of Turntable-EX to validate the version, and note if steps have been stored previously in EEPROM or not:
 
@@ -71,7 +71,7 @@ Turntable homed successfully
 
 *Note that the homing sensor must be connected correctly and functional for this test to succeed.*
 
-### Turntable-EX is Available
+### Test 2 - Turntable-EX is Available
 
 In the serial console of the CommandStation, execute `<D HAL SHOW>` and ensure the output is as displayed:
 
@@ -89,11 +89,11 @@ In the serial console of the CommandStation, execute `<D HAL SHOW>` and ensure t
 
 *Note that the I2C connection to the CommandStation must be reliable, and Turntable-EX powered on prior to the CommandStation for this test to succeed.*
 
-### Basic Movement and Phase Inversion
+### Test 3 - Basic Movement and Phase Inversion
 
 Testing basic movement requires use of the serial console of the CommandStation and/or Engine Driver or a WiThrottle application in order to issue the required commands.
 
-#### Part 1 - Clockwise
+#### Test 3, Part 1 - Clockwise
 
 When using the serial console, executing the below commands in this order should have the turntable rotate in a clockwise direction only, with the last three positions activating the dual relay board for DCC phase inversion.
 
@@ -117,7 +117,7 @@ If using Engine Driver or a WiThrottle for these tests, select these ROUTEs in t
 
 `Success Criteria:` The turntable should rotate to ~10 degrees from home, then ~20 degrees, then ~30 degrees, then ~190 degrees with relay activation, ~200 degrees maintaining relay activation, and finally ~210 degrees maintaining relay activation, all in a clockwise direction.
 
-#### Part 2 - Counter Clockwise
+#### Test 3, Part 2 - Counter Clockwise
 
 Executing the below commands in this order should have the turntable rotate in a counter clockwise direction, with the second command deactivating the dual relay board:
 
@@ -133,7 +133,7 @@ If using Engine Driver or a WiThrottle for these tests, select these ROUTEs in t
 
 `Success Criteria:` The turntable should rotate to ~190 degrees from home maintaining relay activation, then ~20 degrees and deactiving the relays.
 
-### Homing
+### Test 4 - Homing
 
 Homing can be tested via the CommandStation serial console and/or Engine Driver/WiThrottle applications.
 
@@ -149,7 +149,7 @@ In Engine Driver/WiThrottle applications, select this ROUTE:
 
 `Success Criteria:` The turntable should rotate in a clockwise direction until the homing sensor is triggered, where it should stop immediately.
 
-### Calibration
+### Test 5 - Calibration
 
 Calibration can be tested via the CommandStation serial console and/or Engine Driver/WiThrottle applications, and the serial console of Turntable-EX will need to be monitored also.
 
@@ -177,7 +177,7 @@ Turntable homed successfully
 
 `Success Criteria:` The turntable should rotate in a clockwise direction to home, and then clockwise to re-home and count the full turn steps.
 
-### LED Output Testing
+### Test 6 - LED Output Testing
 
 The LED output has three active states to test; on, slow blinking, and fast blinking.
 
@@ -199,7 +199,7 @@ In Engine Driver/WiThrottle applications, select these ROUTEs in this order:
 
 `Success Criteria:` The LED should be on (not blinking) after the first command, blinking at a rate of 500ms on/off after the second, blinking at a rate of 100ms on/off after the third, and then turn off after the fourth.
 
-### Accessory Output Testing
+### Test 7 - Accessory Output Testing
 
 The accessory output can be either on or off.
 
