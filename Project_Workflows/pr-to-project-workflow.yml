@@ -123,3 +123,8 @@ jobs:
           #       }
           #     }
           #   }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.REVIEW_OPTION_ID }} -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
+
+      -name: Add labels
+        uses: andymckay/labeler@master
+        with:
+          add-labels: "Turntable-EX"
