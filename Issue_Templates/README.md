@@ -20,3 +20,4 @@ An example of a use case for local templates would be Beta testing reports, whic
 - `feature_request.md` is designed to capture information relating to a requested new feature or enhancement, with the "Enhancement" label added.
 - `support_request.md` is to capture all information to help users raise a support request, with the "Support Request" label added.
 - `to_do.md` is to raise a general "To Do" issue that needs to be done, with the "To Do" label added.
+- `documentation_update.md` is to raise a request for documentation improvements, with the "Documentation" label added.

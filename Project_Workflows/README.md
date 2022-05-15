@@ -20,9 +20,13 @@ The build test workflow also must reside in this directory for repositories that
 
 `issue-to-project-workflow.yml` is the workflow file that takes any issue created in the local repository, and associates it with the Project, with the appropriate labels to populate the appropriate views on the project board.
 
+**Be sure to update the labels** relevant to the repository that the workflow is associated with when copying the workflows, according to [GitHub Labels](https://github.com/DCC-EX/Support-Planning/blob/master/Processes/GitHub_Labels.md).
+
 ## Pull Request to Project Workflow
 
 `pr-to-project-workflow.yml` is the workflow file that takes any pull request created in the local repository, and associates it with the Project, with the appropriate labels to populate the appropriate views on the project board, as well as moving it to the correct review status.
+
+**Be sure to update the labels** relevant to the repository that the workflow is associated with when copying the workflows, according to [GitHub Labels](https://github.com/DCC-EX/Support-Planning/blob/master/Processes/GitHub_Labels.md).
 
 ## Build Test Workflow
 
