@@ -8,12 +8,13 @@ Alpha Testing | Lt Purple | #D4C5F9 | Item relates to a feature in Alpha testing
 Beta Testing | Lt Yellow | #FEF2C0 | Item relates to a feature in Beta testing
 Breaking Change | Orange/Red | #D93F0B | Indicates that the bug fix or new feature introduces a breaking change
 Bug | Red | #B60205 | Something isn't working as designed
-Core | Dk Blue | #0052CC | Item relates to the core CommandStation-EX code
+CommandStation-EX | Dk Blue | #0052CC | Item relates to the core CommandStation-EX code
 Documentation | Blue | #1D76DB | Item relates to documentation
 Documented | Green | #0E8A16 | Item that was previously labelled "Needs Documentation" has had this completed
 Enhancement | Lt Blue | #C5DEF5 | New feature or request
 EX-RAIL | Green/Blue | #006B75 | Item relates to EX-RAIL automation
 Hardware | Purple | #5319E7 | Item relates to hardware
+Installer-EX | Green/Blue | #006B75 | Item relates to Installer-EX
 Needs Clarification | Yellow | #FBCA04 | Need more information from the requestor
 Needs Documentation | Yellow | #FBCA04 | Item requires supporting documentation
 Needs Review | Yellow | #FBCA04 | Item requires review
