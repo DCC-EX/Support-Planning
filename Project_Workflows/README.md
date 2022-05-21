@@ -18,11 +18,9 @@ The build test workflow also must reside in this directory for repositories that
 
 ## Labels in Workflows
 
-When copying the below workflows to a new repository, the label in the "Add labels" step at the beginning of the job need to be updated to suit the repository.
+When copying the below workflows to a new repository, a repository secret called "PROJECT_STREAM_LABEL" needs to be added to ensure the repository is associated with the correct stream for the project.
 
-The templates have this set to "Turntable-EX" due to that being the first repository configured with these workflows.
-
-The labels added as part of that particular step of the job should reflect the stream of work the repository relates to:
+The label added as part of that particular step of the job should reflect the stream of work the repository relates to:
 
 * CommandStation-EX
 * Installer-EX
@@ -33,17 +31,22 @@ The labels added as part of that particular step of the job should reflect the s
 
 Refer to [GitHub Labels](https://github.com/DCC-EX/Support-Planning/blob/master/Processes/GitHub_Labels.md) for the defined list of labels.
 
-## Issue to Project Workflow
+Note that while environment variables are the logical place for labels, private repositories on the free tier do not have this option, hence the use of a secret instead.
 
-`issue-to-project-workflow.yml` is the workflow file that takes any issue created in the local repository, and associates it with the Project, with the appropriate labels to populate the appropriate views on the project board.
+### Setting the PROJECT_STREAM_LABEL Repository Secret
 
-**Be sure to update the labels** relevant to the repository that the workflow is associated with when copying the workflows, according to [GitHub Labels](https://github.com/DCC-EX/Support-Planning/blob/master/Processes/GitHub_Labels.md).
+1. Navigate to the "Settings" tab of the repository in GitHub.
+2. Under "Security", expand "Secrets", and select "Actions".
+3. If there is an existing repository secret called "PROJECT_STREAM_LABEL", then it is already set. Note that you cannot view secrets, so you will need to use "Update" to set the value.
+4. If the secret does not exist, select "New repository secret".
+5. Enter "PROJECT_STREAM_LABEL" as the Name, and add the label in the Value field.
+6. Click "Add secret" to add the label as a secret.
 
-## Pull Request to Project Workflow
+## New Items Workflow
 
-`pr-to-project-workflow.yml` is the workflow file that takes any pull request created in the local repository, and associates it with the Project, with the appropriate labels to populate the appropriate views on the project board, as well as moving it to the correct review status.
+`new-items.yml` is the workflow file that takes any issue or pull request created in the local repository, and associates it with the Project, with the appropriate labels to populate the appropriate views on the project board.
 
-**Be sure to update the labels** relevant to the repository that the workflow is associated with when copying the workflows, according to [GitHub Labels](https://github.com/DCC-EX/Support-Planning/blob/master/Processes/GitHub_Labels.md).
+**Be sure to set the repository secret** relevant to the repository that the workflow is associated with when copying the workflows as per the above process, according to [GitHub Labels](https://github.com/DCC-EX/Support-Planning/blob/master/Processes/GitHub_Labels.md).
 
 ## Build Test Workflow
 
@@ -57,11 +60,34 @@ In addition, various views have been configured to help the team view only what'
 
 ## Project Views
 
-**To Do**
+Various project views have been created to allow team members to have an overview of items relevant to themselves, the team they are a member of, or a particular stream of work.
+
+### Project Overview
+
+All items in the project in a Kanban view with no filters.
+
+### Turntable-EX
+
+A Kanban view of all items relating to the Turntable-EX project stream, which is populated based on the "Turntable-EX" label.
+
+### Documenters
+
+A Kanban view of all items of interest for documentation team members, which is populated based on the labels "Documentation", "Needs Documentation", and "Documented".
+
+### My Items
+
+A Kanban view of a team member's items for a personal view, which is populated by the "@me" filter, and is therefore always in the context of the logged in GitHub user.
 
 ## Project Workflow Configuration
 
-**To Do**
+All default workflows in the GitHub project have been, with adjustments to suit our needs.
+
+- Item added to project: Enabled, status set to Backlog.
+- Item reopened: Enabled, default settings.
+- Item closed: Enabled, default settings.
+- Code changes requested: Enabled, status set to Needs Review.
+- Code review approved: Enabled, default settings.
+- Pull request merged: Enabled, default settings.
 
 # GitHub App and Permissions
 
