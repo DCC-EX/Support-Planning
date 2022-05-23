@@ -89,21 +89,34 @@ In the serial console of the CommandStation, execute `<D HAL SHOW>` and ensure t
 
 *Note that the I2C connection to the CommandStation must be reliable, and Turntable-EX powered on prior to the CommandStation for this test to succeed.*
 
-### Test 3 - Basic Movement and Phase Inversion
+### Test 3 - Basic Movement with Automatic Phase Switching
 
 Testing basic movement requires use of the serial console of the CommandStation and/or Engine Driver or a WiThrottle application in order to issue the required commands.
 
+To validate automatic phase switching is enabled, review the startup text in the Turntable-EX serial console, which should display this:
+
+```
+License GPLv3 fsf.org (c) dcc-ex.com
+Turntable-EX version 0.3.1-Beta
+Available at I2C address 0x60
+Turntable-EX has been calibrated for 4098 steps per revolution
+Automatic phase switching enabled at 45 degrees                                   <<== Confirms automatic phase switching and the angle it starts
+Phase will switch at 495 steps from home, and revert at 2475 steps from home      <<== Confirms invert/revert step counts
+```
+
+Note that the step counts are calculated from the steps per revolution, therefore these may vary.
+
 #### Test 3, Part 1 - Clockwise
 
-When using the serial console, executing the below commands in this order should have the turntable rotate in a clockwise direction only, with the last three positions activating the dual relay board for DCC phase inversion.
+When using the serial console, executing the below commands in this order should have the turntable rotate in a clockwise direction only, with the last three positions activating the dual relay board for DCC phase inversion due to automatic phase inversion.
 
 ```
 <D TT 600 114 0>
 <D TT 600 227 0>
 <D TT 600 341 0>
-<D TT 600 2159 1>
-<D TT 600 2273 1>
-<D TT 600 2386 1>
+<D TT 600 2159 0>
+<D TT 600 2273 0>
+<D TT 600 2386 0>
 ```
 
 If using Engine Driver or a WiThrottle for these tests, select these ROUTEs in this order which should have the same output as the serial commands above:
@@ -122,7 +135,7 @@ If using Engine Driver or a WiThrottle for these tests, select these ROUTEs in t
 Executing the below commands in this order should have the turntable rotate in a counter clockwise direction, with the second command deactivating the dual relay board:
 
 ```
-<D TT 600 2159 1>
+<D TT 600 2159 0>
 <D TT 600 227 0>
 ```
 
@@ -213,6 +226,38 @@ In the CommandStation serial console, execute the follow commands:
 In Engine Driver/WiThrottle applications, select these ROUTEs in this order:
 
 1. TTEX-RT15 - Accessory On
-2. TTEX-RT14 - Accessory Off
+2. TTEX-RT16 - Accessory Off
 
 `Success Criteria:` The LED connected to the accessory output should be on after the first command, and off after the second.
+
+### Test 8 - Manual Phase Switching
+
+In order to test manual phase inversion, you will need to edit "config.h", set the `PHASE_SWITCHING` option to "MANUAL", and upload to Turntable-EX.
+
+```
+#define PHASE_SWITCHING MANUAL
+```
+
+To validate automatic phase switching is enabled, review the startup text in the Turntable-EX serial console, which should display this:
+
+```
+License GPLv3 fsf.org (c) dcc-ex.com
+Turntable-EX version 0.3.1-Beta
+Available at I2C address 0x60
+Turntable-EX has been calibrated for 4098 steps per revolution
+Manual phase switching enabled                                    <<== This validates phase switching is in manual mode
+```
+
+In the CommandStation serial console, execute the follow commands:
+
+```
+<D TT 600 2159 0>
+<D TT 600 341 1>
+```
+
+In Engine Driver/WiThrottle applications, select these ROUTEs in this order:
+
+1. TTEX-RT17 - Position 4
+2. TTEX-RT18 - Position 2
+
+`Success Criteria:` The first command should have the turntable rotate to position 4 with the phase switch relays deactivated, then to position 2 with the relays activated.
