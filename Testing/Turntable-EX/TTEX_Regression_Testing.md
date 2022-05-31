@@ -261,3 +261,85 @@ In Engine Driver/WiThrottle applications, select these ROUTEs in this order:
 2. TTEX-RT18 - Position 2
 
 `Success Criteria:` The first command should have the turntable rotate to position 4 with the phase switch relays deactivated, then to position 2 with the relays activated.
+
+### Test 9 - Sensor Testing
+
+In order to validate sensor testing mode works as designed, you will need to edit "config.h", remove the "//" from the below line, and upload to Turntable-EX:
+
+```
+// #define SENSOR_TESTING
+```
+
+On startup, in TURNTABLE mode, the serial console should display the following:
+
+```
+License GPLv3 fsf.org (c) dcc-ex.com
+Turntable-EX version 0.4.0-Beta
+Available at I2C address 0x60
+Turntable-EX in TURNTABLE mode
+SENSOR TESTING ENABLED, Turntable-EX operations disabled
+Home/limit switch current state: 1/0
+Debounce delay: 0
+```
+
+In TRAVERSER mode, it should display the following:
+
+```
+License GPLv3 fsf.org (c) dcc-ex.com
+Turntable-EX version 0.4.0-Beta
+Available at I2C address 0x60
+Turntable-EX in TRAVERSER mode
+SENSOR TESTING ENABLED, Turntable-EX operations disabled
+Home/limit switch current state: 1/1
+Debounce delay: 10
+```
+
+Operate the home (and limit in TRAVERSER mode if applicable) switch and review the serial console.
+
+As each sensor is triggered, this should be reflected on each state change:
+
+```
+Home sensor ACTIVATED
+Home sensor DEACTIVATED
+Limit sensor ACTIVATED
+Limit sensor DEACTIVATED
+```
+
+`Success criteria:` Home and/or limit sensors accurately report ACTIVATED/DEACTIVATED when triggered, and all other Turntable-EX operations are ignored.
+
+### Test 10 - Traverser Mode
+
+The only functional difference to the code between TURNTABLE and TRAVERSER mode is the addition of the limit sensor, and the subsequent modification to the calibration sequence to utilise both the home and limit sensors to calculate the step count.
+
+If TRAVERSER mode is all that is being tested, it is recommended that all previous tests are also completed, taking into account the fact that the step counts will need to be adjusted according to the output of the calibration sequence.
+
+Calibration can be tested via the CommandStation serial console and/or Engine Driver/WiThrottle applications, and the serial console of Turntable-EX will need to be monitored also.
+
+In the CommandStation serial console, execute the follow command:
+
+```
+<D TT 600 0 3>
+```
+
+In Engine Driver/WiThrottle applications, select this ROUTE:
+
+- TTEX-RT19 - Calibrate traverser
+
+Monitor the Turntable-EX serial console while the calibration process proceeds. The traverser should move to home first, and repeat that as part of phase 1, then it should move towards the limit sensor as phase 2, then once the sensor is activated, phase 3 should have it move away from the limit sensor, record the step count, and then proceed once again to home.
+
+```
+Homing started
+Turntable homed successfully
+CALIBRATION: Phase 1, homing...
+Turntable already homed
+CALIBRATION: Phase 2, finding limit switch...
+CALIBRATION: Phase 3, counting limit steps...
+CALIBRATION: Completed, storing full turn step count: 2501
+Turntable-EX has been calibrated for 2501 steps per revolution
+Automatic phase switching enabled at 45 degrees
+Phase will switch at 270 steps from home, and revert at 1350 steps from home
+Homing started
+Turntable homed successfully
+```
+
+`Success Criteria:` The traverser should move to home, then the limit sensor, and once moving away from the limit sensor should report calibration complete, with a final move to home.
