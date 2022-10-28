@@ -53,7 +53,10 @@ except Exception as errorMessage:
 # if it doesn't exist, create it.
 # =========================================================================================
 for label in labelData:
-  gh_label = repo.get_label(label)
+  try:
+    gh_label = repo.get_label(label)
+  except:
+    gh_label = None
   if (gh_label):
     if (label == gh_label.name and labelData[label]['colour'] == gh_label.color and labelData[label]['description'] == gh_label.description):
       print(label + " is OK")

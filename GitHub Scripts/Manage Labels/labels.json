@@ -77,7 +77,7 @@
   },
   "Reviewed": {
     "colour": "0E8A16",
-    "description": "Item previously labelled "Needs Review" has been reviewed"
+    "description": "Item previously labelled 'Needs Review' has been reviewed"
   },
   "Support Request": {
     "colour": "D93F0B",
