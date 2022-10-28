@@ -1,0 +1,98 @@
+{
+  "Alpha Testing": {
+    "colour": "D4C5F9",
+    "description": "Item relates to a feature in Alpha testing"
+  },
+  "Beta Testing": {
+    "colour": "FEF2C0",
+    "description": "Item relates to a feature in Beta testing"
+  },
+  "Breaking Change": {
+    "colour": "D93F0B",
+    "description": "Indicates that the bug fix or new feature introduces a breaking change"
+  },
+  "Bug": {
+    "colour": "B60205",
+    "description": "Something isn't working as designed"
+  },
+  "Documentation": {
+    "colour": "1D76DB",
+    "description": "Item relates to documentation"
+  },
+  "Documented": {
+    "colour": "0E8A16",
+    "description": "Item that was previously labelled 'Needs Documentation' has had this completed"
+  },
+  "Enhancement": {
+    "colour": "C5DEF5",
+    "description": "New feature or request"
+  },
+  "EX-CommandStation": {
+    "colour": "0052CC",
+    "description": "Item relates to the core EX-CommandStation code"
+  },
+  "EX-DCCInspector": {
+    "colour": "A239E4",
+    "description": "Item relates to EX-DCCInspector"
+  },
+  "EX-Installer": {
+    "colour": "006B75",
+    "description": "Item relates to EX-Installer"
+  },
+  "EX-RAIL": {
+    "colour": "006B75",
+    "description": "Item relates to EX-RAIL automation"
+  },
+  "EX-Turntable": {
+    "colour": "006B75",
+    "description": "Item relates to EX-Turntable specifically"
+  },
+  "EX-WebThrottle": {
+    "colour": "006B75",
+    "description": "Item relates to EX-WebThrottle specifically"
+  },
+  "Hardware": {
+    "colour": "5319E7",
+    "description": "Item relates to hardware"
+  },
+  "Needs Clarification": {
+    "colour": "FBCA04",
+    "description": "Need more information from the requestor"
+  },
+  "Needs Documentation": {
+    "colour": "FBCA04",
+    "description": "Item requires supporting documentation"
+  },
+  "Needs Review": {
+    "colour": "FBCA04",
+    "description": "Item requires review"
+  },
+  "Needs Testing": {
+    "colour": "FBCA04",
+    "description": "Item has not been unit and/or regression testing"
+  },
+  "Regression Tested": {
+    "colour": "0E8A16",
+    "description": "Regression testing has been completed"
+  },
+  "Reviewed": {
+    "colour": "0E8A16",
+    "description": "Item previously labelled "Needs Review" has been reviewed"
+  },
+  "Support Request": {
+    "colour": "D93F0B",
+    "description": "Item is a request for support"
+  },
+  "To Do": {
+    "colour": "FEF2C0",
+    "description": "General work task to be completed"
+  },
+  "Unit Tested": {
+    "colour": "C2E0C6",
+    "description": "Unit testing has been completed"
+  },
+  "Will Not Fix": {
+    "colour": "FFFFFF",
+    "description": "Feature will not be implemented, or bug will not be fixed"
+  }
+}
