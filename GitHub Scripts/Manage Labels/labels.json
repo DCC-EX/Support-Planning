@@ -39,6 +39,10 @@
     "colour": "006B75",
     "description": "Item relates to EX-Installer"
   },
+  "EX-IOExpander": {
+    "colour": "006B75",
+    "description": "Item relates to EX-IOExpander"
+  },
   "EX-RAIL": {
     "colour": "006B75",
     "description": "Item relates to EX-RAIL automation"
