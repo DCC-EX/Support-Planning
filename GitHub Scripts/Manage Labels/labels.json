@@ -55,6 +55,10 @@
     "colour": "006B75",
     "description": "Item relates to EX-WebThrottle specifically"
   },
+  "DCCEXProtocol": {
+    "colour": "006B75",
+    "description": "Item relates to the DCCEXProtocol Arduino library specifically"
+  },
   "Hardware": {
     "colour": "5319E7",
     "description": "Item relates to hardware"
